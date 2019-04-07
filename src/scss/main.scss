@@ -1,0 +1,63 @@
+body {
+  .app {
+
+    h1 {
+      &.header-app {
+        padding: 20px;
+        margin-bottom: 18px;
+        background-color: #000;
+        color: #fff;
+        border-bottom: 1px solid #000000;
+        text-align: center;
+      }
+    }
+
+    .toolbar-app {
+      text-align: center;
+    }
+
+    .users-list-app {
+      margin-top: 20px;
+    }
+
+    .content-app {
+      padding: 20px 10px;
+    }
+
+    .ui.items {
+      > .item.post-item {
+        border-bottom: 1px solid #e0dcdc;
+
+        .post-body-item {
+          max-width: 300px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        .button-group-item {
+          height: 40px;
+        }
+      }
+    }
+  }
+
+  .ui.modal {
+
+    >.content {
+
+      >.description {
+        flex: auto;
+
+        .detail-post-textarea {
+          margin-top: 10px;
+        }
+      }
+
+      .ui.comments {
+        max-width: 100%;
+      }
+    }
+  }
+
+}
