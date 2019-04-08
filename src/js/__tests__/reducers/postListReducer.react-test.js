@@ -1,5 +1,5 @@
-import {postListReducer, initialState} from '../../src/js/reducers/postListReducer';
-import {LOAD_POSTS, LOAD_SUCCESS} from '../../src/js/actions/PostListAction';
+import {postListReducer, initialState} from '../../reducers/postListReducer';
+import {LOAD_POSTS, LOAD_SUCCESS} from '../../actions/PostListAction';
 
 describe('postList reducer', () => {
     it (LOAD_POSTS, () => {
