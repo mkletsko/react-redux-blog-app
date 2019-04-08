@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import PropTypes from 'prop-types';
-import {System} from "../config/constants";
+import {System} from '../config/constants';
 import {Button, Header, Modal, Comment, Input, Form, TextArea} from 'semantic-ui-react'
 
 export class PostDetail extends Component {
@@ -8,15 +8,19 @@ export class PostDetail extends Component {
         super(props);
     }
 
+    // if this modal window is opening in view mode
+    // then needing loading information for current post
     componentDidMount() {
         if (this.props.viewMode === System.VIEW_MODE.EDIT)
             this.props.loadPostDetail(this.props.formID);
     }
 
+    // setting mode (true/false) in store for opening modal window
     closeModal = () => {
         this.props.showModalDetail(!this.props.isShowModal);
     };
 
+    // running action for saving new post
     saveNewPost = () => {
         const {postTitleValue, postTextValue, saveNewPost, userID} = this.props;
         this.closeModal();
@@ -27,16 +31,19 @@ export class PostDetail extends Component {
         });
     };
 
+    // setting entered title text for new post in store
     handleChangeTitlePost = (e) => {
         let value = e.target.value;
         this.props.handleChangeTitle(value);
     };
 
+    // setting entered text for new post in store
     handleChangeTextPost = (e) => {
         let value = e.target.value;
         this.props.handleChangeText(value);
     };
 
+    // this template render when open modal for creating new post
     renderNewPost() {
         return <Fragment>
             <Modal.Header>New post</Modal.Header>
@@ -51,6 +58,7 @@ export class PostDetail extends Component {
         </Fragment>;
     }
 
+    // this template render when open modal for displaying current post
     renderCurrentPost() {
         const {detail, comments} = this.props;
 
@@ -70,6 +78,7 @@ export class PostDetail extends Component {
         </Fragment>;
     }
 
+    // this template render when open modal for displaying comments for current post
     renderComments(comments) {
         return comments.map(item => {
             return <Comment key={item.id}>
@@ -102,7 +111,7 @@ export class PostDetail extends Component {
                             positive
                             icon='checkmark'
                             labelPosition='right'
-                            content="Save post"
+                            content='Save post'
                             onClick={this.saveNewPost}
                         />}
                     </Modal.Actions>

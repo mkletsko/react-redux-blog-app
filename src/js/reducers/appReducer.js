@@ -1,4 +1,4 @@
-import { LOAD_FORM } from "../actions/AppActions";
+import {LOAD_FORM} from '../actions/AppActions';
 
 const initialState = {
     formID: null,

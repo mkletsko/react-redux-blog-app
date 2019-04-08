@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import {connect} from "react-redux";
+import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import Form from '../components/Form';
-
-import {loadUsers} from "../actions/UsersListAction";
+import {loadUsers} from '../actions/UsersListAction';
+import {PostDetail} from '../components/PostDetail';
 import {Tab} from 'semantic-ui-react'
 
 class UsersListContainer extends Component {
@@ -39,6 +39,13 @@ class UsersListContainer extends Component {
         )
     }
 }
+
+PostDetail.propTypes = {
+    componentProps: PropTypes.object,
+    formID: PropTypes.number,
+    viewMode: PropTypes.string,
+    loadForm: PropTypes.func
+};
 
 const mapStateToProps = store => {
     return {

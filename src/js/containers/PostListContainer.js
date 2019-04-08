@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
+import {loadPosts, removePost} from '../actions/PostListAction';
+import {showModal} from '../actions/PostDetailAction';
 import PostItem from '../components/PostItem';
+import {PostDetail} from '../components/PostDetail';
 import {Item, Dimmer, Loader} from 'semantic-ui-react';
-import {loadPosts, removePost} from "../actions/PostListAction";
-import {connect} from "react-redux";
-import {showModal} from "../actions/PostDetailAction";
 
 class PostListContainer extends Component {
 
@@ -49,6 +50,15 @@ class PostListContainer extends Component {
         )
     }
 }
+
+PostDetail.propTypes = {
+    body: PropTypes.string,
+    title: PropTypes.string,
+    id: PropTypes.number,
+    loadForm: PropTypes.func,
+    showModal: PropTypes.func,
+    removePost: PropTypes.func
+};
 
 const mapStateToProps = store => {
     return {

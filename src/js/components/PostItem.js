@@ -21,12 +21,12 @@ export default class PostItem extends Component {
         const {title, body} = this.props;
 
         return (
-            <Item className="post-item">
+            <Item className='post-item'>
                 <Item.Content>
                     <Item.Header>{title}</Item.Header>
-                    <Item.Meta className="post-body-item">{body}</Item.Meta>
+                    <Item.Meta className='post-body-item'>{body}</Item.Meta>
                 </Item.Content>
-                <Button.Group className="button-group-item">
+                <Button.Group className='button-group-item'>
                     <Button onClick={this.viewDetailPost}>View</Button>
                     <Button.Or text='or' />
                     <Button negative onClick={this.removePost}>Remove</Button>
@@ -36,7 +36,9 @@ export default class PostItem extends Component {
     }
 }
 
-// ToolBarApp.propTypes = {
-//     loadForm: PropTypes.func.isRequired,
-// };
+PostItem.propTypes = {
+    title: PropTypes.string,
+    body: PropTypes.string,
+    id: PropTypes.number,
+};
 

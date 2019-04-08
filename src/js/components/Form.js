@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import PropTypes from "prop-types";
-import PostListContainer from "../containers/PostListContainer";
-import PostDetailContainer from "../containers/PostDetailContainer";
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
+import PostListContainer from '../containers/PostListContainer';
+import PostDetailContainer from '../containers/PostDetailContainer';
 
 export default class Form extends Component {
     constructor(props) {
@@ -18,7 +18,7 @@ export default class Form extends Component {
         const {loadForm, viewMode, userID} = this.props;
 
         return (
-            <div className="content-app">
+            <div className='content-app'>
                 {viewMode && this.renderModal()}
                 <PostListContainer loadForm={loadForm} userID={userID}/>
             </div>
@@ -27,6 +27,8 @@ export default class Form extends Component {
     }
 }
 
-// Form.propTypes = {
-//     formType: PropTypes.string.isRequired,
-// };
+Form.propTypes = {
+    formID: PropTypes.number,
+    viewMode: PropTypes.string,
+    userID: PropTypes.number,
+};

@@ -3,5 +3,4 @@ export const System = {
         ADD: 'ADD',
         EDIT: 'EDIT'
     }
-
 };

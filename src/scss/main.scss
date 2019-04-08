@@ -38,6 +38,10 @@ body {
         .button-group-item {
           height: 40px;
         }
+
+        &:last-child {
+          border-bottom: none;
+        }
       }
     }
   }

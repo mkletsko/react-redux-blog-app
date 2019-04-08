@@ -8,7 +8,7 @@ export default class ToolBarApp extends Component {
         super(props);
     }
 
-    onBtnClick = e => {
+    onBtnClick = () => {
         this.props.showModal(true);
         this.props.loadForm(System.VIEW_MODE.ADD);
     };
@@ -16,7 +16,7 @@ export default class ToolBarApp extends Component {
     render() {
 
         return (
-            <div className="toolbar-app">
+            <div className='toolbar-app'>
                 <Button onClick={this.onBtnClick}>Create new post</Button>
             </div>
         )

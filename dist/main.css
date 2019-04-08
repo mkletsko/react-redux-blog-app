@@ -24,6 +24,8 @@ body .app .ui.items > .item.post-item {
     text-overflow: ellipsis; }
   body .app .ui.items > .item.post-item .button-group-item {
     height: 40px; }
+  body .app .ui.items > .item.post-item:last-child {
+    border-bottom: none; }
 
 body .ui.modal > .content > .description {
   flex: auto; }

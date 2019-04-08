@@ -1,5 +1,5 @@
 import React, {Component, Fragment} from 'react';
-import {connect} from "react-redux";
+import {connect} from 'react-redux';
 import PropTypes from "prop-types";
 import {PostDetail} from '../components/PostDetail';
 import {
@@ -8,7 +8,7 @@ import {
     handleChangeTitle,
     handleChangeText,
     saveNewPost
-} from "../actions/PostDetailAction.js";
+} from '../actions/PostDetailAction.js';
 
 class PostDetailContainer extends Component {
 

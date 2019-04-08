@@ -1,35 +1,41 @@
-import {Config} from '../config/config';
-import {LOAD_POSTS} from "./PostListAction";
+import {httpRequest} from '../helpers/httpRequest';
+import {LOAD_POSTS} from './PostListAction';
 
 export const LOAD_POST_DETAIL = 'LOAD_POST_DETAIL';
 export const LOAD_DETAIL_SUCCESS = 'LOAD_DETAIL_SUCCESS';
 export const SHOW_MODAL = 'SHOW_MODAL';
 export const CHANGE_TITLE = 'CHANGE_TITLE';
 export const CHANGE_TEXT = 'CHANGE_TEXT';
-export const SAVE_POST_SUCCESS = 'SAVE_POST_SUCCESS';
 
+/**
+ * Loading data for current post and comments for post
+ * @param {number} formID
+ * @return {function}
+ */
 export function loadPostDetail(formID) {
-    return (dispatch) => {
+    return async (dispatch) => {
+        const detail = await httpRequest({
+            url: `posts/${formID}`
+        });
+        const comments = await httpRequest({
+            url: `posts/${formID}/comments?postId=${formID}`,
+            operation: 'read'
+        });
 
-        fetch(`${Config.apiUrl}/posts/${formID}`)
-            .then(response => response.json())
-            .then(detail => {
 
-
-                fetch(`${Config.apiUrl}/posts/${formID}/comments?postId=${formID}`)
-                    .then(response => response.json())
-                    .then(comments => {
-
-                        dispatch({
-                            type: LOAD_DETAIL_SUCCESS,
-                            detail,
-                            comments
-                        });
-                    });
-            });
+        dispatch({
+            type: LOAD_DETAIL_SUCCESS,
+            detail,
+            comments
+        });
     }
 }
 
+/**
+ * Set mode for display modal window
+ * @param {boolean} isShowModal
+ * @return {function}
+ */
 export function showModal(isShowModal) {
     return dispatch => {
         dispatch({
@@ -39,6 +45,11 @@ export function showModal(isShowModal) {
     };
 }
 
+/**
+ * Setting for reducer entered data in title field for new post
+ * @param {string} postTitleValue
+ * @return {function}
+ */
 export function handleChangeTitle(postTitleValue) {
     return dispatch => {
         dispatch({
@@ -48,6 +59,11 @@ export function handleChangeTitle(postTitleValue) {
     };
 }
 
+/**
+ * Setting for reducer entered data in text field for new post
+ * @param {string} postTextValue
+ * @return {function}
+ */
 export function handleChangeText(postTextValue) {
     return dispatch => {
         dispatch({
@@ -57,26 +73,33 @@ export function handleChangeText(postTextValue) {
     };
 }
 
+/**
+ * Running server's operation for saving new post
+ * @param {string} title
+ * @param {string} text
+ * @param {number} userID
+ * @return {function}
+ */
 export function saveNewPost({title = '', text = '', userID}) {
-    return (dispatch) => {
-
-        fetch(`${Config.apiUrl}/posts/`, {
-            method: 'POST',
-            body: JSON.stringify({
-                title: title,
-                body: text,
-                userId: userID
-            }),
-            headers: {
-                "Content-type": "application/json; charset=UTF-8"
+    return async (dispatch) => {
+        await httpRequest({
+            url: `posts/`,
+            body: {
+                method: 'POST',
+                body: JSON.stringify({
+                    title: title,
+                    body: text,
+                    userId: userID
+                }),
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                }
             }
-        })
-            .then(response => response.json())
-            .then(json => {
-                dispatch({
-                    type: LOAD_POSTS,
-                    isUpdate: true
-                });
-            });
+        });
+
+        dispatch({
+            type: LOAD_POSTS,
+            isUpdate: true
+        });
     }
 }

@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import UsersListContainer from '../containers/UsersListContainer';
-import ToolBarApp from '../components/ToolBarApp';
+import PropTypes from 'prop-types';
 import {loadForm} from '../actions/AppActions';
 import {showModal} from '../actions/PostDetailAction';
+import UsersListContainer from '../containers/UsersListContainer';
+import ToolBarApp from '../components/ToolBarApp';
 import {Header} from 'semantic-ui-react'
 
 class MainContainer extends Component {
@@ -25,6 +26,12 @@ class MainContainer extends Component {
         );
     }
 }
+
+MainContainer.propTypes = {
+    application: PropTypes.object,
+    loadFormAction: PropTypes.func,
+    showModalAction: PropTypes.func,
+};
 
 const mapStateToProps = store => {
     return {

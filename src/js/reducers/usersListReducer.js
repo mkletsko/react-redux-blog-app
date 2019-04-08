@@ -1,4 +1,4 @@
-import {LOAD_USERS, LOAD_USER_SUCCESS} from "../actions/UsersListAction";
+import {LOAD_USERS, LOAD_USER_SUCCESS} from '../actions/UsersListAction';
 
 const initialState = {
     isLoading: true,
