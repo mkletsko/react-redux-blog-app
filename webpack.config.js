@@ -12,6 +12,10 @@ module.exports = {
         filename: './main.js',
         chunkFilename: '[name].bundle.js'
     },
+    performance: {
+        maxEntrypointSize: 512000,
+        maxAssetSize: 512000
+    },
     devServer: {
         contentBase: path.join(__dirname, 'dist'),
         compress: true,
@@ -37,7 +41,6 @@ module.exports = {
                     loader: 'babel-loader'
                 }
             },
-
             {
                 test: /\.(css|scss)$/,
                 use: [
