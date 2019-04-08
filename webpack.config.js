@@ -19,7 +19,7 @@ module.exports = {
     devServer: {
         contentBase: path.join(__dirname, 'dist'),
         compress: true,
-        port: 8000,
+        port: 9000,
         watchContentBase: true,
         progress: true
     },
@@ -48,6 +48,10 @@ module.exports = {
                     'css-loader',
                     'sass-loader',
                 ]
+            },
+            {
+                test: /\.(eot|png|svg|[ot]tf|woff2?)(\?v=\d+\.\d+\.\d+)?$/,
+                use: ['file-loader']
             }
         ]
     }
