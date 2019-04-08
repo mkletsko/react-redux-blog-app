@@ -21,6 +21,12 @@
 git clone https://github.com/mkletsko/react-redux-blog-app
 ```
 
+* Go go to the react-redux-blog-app folder:
+
+```
+cd react-redux-blog-app/
+```
+
 * Then install the dependencies:
 
 ```
