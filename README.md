@@ -56,4 +56,4 @@ Tests come bundled with:
 ### To build the production package
 
 ```
-npm build
+npm run build
