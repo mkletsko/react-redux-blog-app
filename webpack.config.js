@@ -14,7 +14,8 @@ module.exports = {
     },
     performance: {
         maxEntrypointSize: 512000,
-        maxAssetSize: 512000
+        maxAssetSize: 512000,
+        hints: false
     },
     devServer: {
         contentBase: path.join(__dirname, 'dist'),
@@ -48,10 +49,6 @@ module.exports = {
                     'css-loader',
                     'sass-loader',
                 ]
-            },
-            {
-                test: /\.(eot|png|svg|[ot]tf|woff2?)(\?v=\d+\.\d+\.\d+)?$/,
-                use: ['file-loader']
             }
         ]
     }

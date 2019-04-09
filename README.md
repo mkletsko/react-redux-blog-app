@@ -8,6 +8,7 @@
 * React 16
 * Redux 4
 * Webpack 4
+* Semantic-UI 2.4
 * SCSS
 * Babel
 * Jest 24
